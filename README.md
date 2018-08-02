@@ -18,8 +18,11 @@ let WormholeCash = require('wormholecash');
 
 ### Create an instance of the class
 
+The `constructor` takes 1 required argument `mnemonic` and an optional argument `hdpath`. If you don't pass in a `hdpath` the standard BIP44 `m/44'/145'/0'/0/0` is used.
+
 ```js
-let wormholecash = new WormholeCash();
+let mnemonic = "credit control lesson surface clerk shiver mother jacket myth drum hair inquiry phrase base valid empower jungle advance naive height express aisle arrive family";
+let wormholecash = new WormholeCash(mnemonic);
 ```
 
 ### Burn some BCH for WHC
