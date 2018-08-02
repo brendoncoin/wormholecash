@@ -1,24 +1,34 @@
 let BITBOXCli = require('bitbox-cli/lib/bitbox-cli').default;
-let BITBOX = new BITBOXCli();
 
 module.exports = class WormholeCash {
-  constructor(mnemonic, hdpath = "m/44'/145'/0'/0/0") {
+  constructor(mnemonic, hdpath = "m/44'/145'/0'/0/0", network = 'mainnet') {
     this.mnemonic = mnemonic;
     this.hdpath = hdpath;
-    let rootSeed = BITBOX.Mnemonic.toSeed(mnemonic);
-    let masterHDNode = BITBOX.HDNode.fromSeed(rootSeed, 'bitcoincash');
-    this.change = BITBOX.HDNode.derivePath(masterHDNode, "m/44'/145'/0'/0/0");
-    this.cashAddress = BITBOX.HDNode.toCashAddress(this.change);
+    if(network === 'mainnet') {
+      this.net = 'bitcoincash';
+      this.restURL = "https://rest.bitcoin.com/v1/";
+    } else {
+      this.net = 'testnet';
+      this.restURL = "https://trest.bitcoin.com/v1/";
+    }
+
+    this.BITBOX = new BITBOXCli({
+      restURL: this.restURL
+    });
+    let rootSeed = this.BITBOX.Mnemonic.toSeed(mnemonic);
+    let masterHDNode = this.BITBOX.HDNode.fromSeed(rootSeed, this.net);
+    this.change = this.BITBOX.HDNode.derivePath(masterHDNode, "m/44'/145'/0'/0/0");
+    this.cashAddress = this.BITBOX.HDNode.toCashAddress(this.change);
   }
 
   burn(satoshis) {
-    BITBOX.Address.utxo(this.cashAddress).then((result) => {
+    this.BITBOX.Address.utxo(this.cashAddress).then((result) => {
       if(!result[0]) {
         return;
       }
 
       // instance of transaction builder
-      let transactionBuilder = new BITBOX.TransactionBuilder();
+      let transactionBuilder = new this.BITBOX.TransactionBuilder(this.net);
       // original amount of satoshis in vin
       let originalAmount = result[0].satoshis;
 
@@ -34,15 +44,21 @@ module.exports = class WormholeCash {
       // amount to send to receiver. It's the original amount - 1 sat/byte for tx size
       let sendAmount = originalAmount - 211;
 
-      // add output w/ address and amount to send
-      transactionBuilder.addOutput('qqqqqqqqqqqqqqqqqqqqqqqqqqqqqu08dsyxz98whc', sendAmount);
+      // add Wormhole burner address and amount to send
+      let out;
+      if(this.net === 'bitcoincash') {
+        out = 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqu08dsyxz98whc';
+      } else {
+        out = 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqdmwgvnjkt8whc';
+      }
+      transactionBuilder.addOutput(out, sendAmount);
       // let data = Buffer.from("0877686300000044");
       let data = "0877686300000044";
-      let buf = BITBOX.Script.nullData.output.encode(Buffer.from(data, 'hex'));
+      let buf = this.BITBOX.Script.nullData.output.encode(Buffer.from(data, 'hex'));
       transactionBuilder.addOutput(buf, 0);
 
       // keypair
-      let keyPair = BITBOX.HDNode.toKeyPair(this.change);
+      let keyPair = this.BITBOX.HDNode.toKeyPair(this.change);
 
       // sign w/ HDNode
       let redeemScript;
@@ -55,7 +71,7 @@ module.exports = class WormholeCash {
       console.log(hex);
 
       // sendRawTransaction to running BCH node
-      BITBOX.RawTransactions.sendRawTransaction(hex).then((result) => {
+      this.BITBOX.RawTransactions.sendRawTransaction(hex).then((result) => {
         console.log(result);
       }, (err) => {
         console.log(err);
