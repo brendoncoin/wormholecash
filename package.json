@@ -1,6 +1,6 @@
 {
   "name": "wormholecash",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "BITBOX lib for WormholeCash",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,6 @@
     "url": "git+https://github.com/Bitcoin-com/wormholecash.git"
   },
   "dependencies": {
-    "bitbox-cli": "1.4.9"
+    "bitbox-cli": "^1.4.9"
   }
 }
