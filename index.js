@@ -1,83 +1,152 @@
-let BITBOXCli = require('bitbox-cli/lib/bitbox-cli').default;
+#!/usr/bin/env node
+require("babel-register");
+let path = require('path');
+let program = require('commander');
+let chalk = require('chalk');
+let mkdirp = require('mkdirp');
+let cpFile = require('cp-file');
+let figlet = require('figlet');
+let clear = require('clear');
+let fs = require('fs');
+let os = require('os');
+let touch = require("touch");
+let emoji = require('node-emoji');
+let repl = require("repl");
+let ini = require('ini');
+let BITBOXCli = require('./lib/bitbox-cli').default;
+let clone = require('git-clone');
+let corsproxy = require('corsproxy');
+let cmd = require('node-cmd');
 
-module.exports = class WormholeCash {
-  constructor(mnemonic, hdpath = "m/44'/145'/0'/0/0", network = 'mainnet') {
-    this.mnemonic = mnemonic;
-    this.hdpath = hdpath;
-    if(network === 'mainnet') {
-      this.net = 'bitcoincash';
-      this.restURL = "https://rest.bitcoin.com/v1/";
-    } else {
-      this.net = 'testnet';
-      this.restURL = "https://trest.bitcoin.com/v1/";
+program
+  .version('0.0.7');
+//
+// program
+//   .command('new <name>')
+//   .option('-s, --scaffold <scaffold>', 'The framework to use. Options include react, angular, vuejs, nextjs and node.')
+//   .option('-r, --restURL <restURL>', 'The rest URL to use. default: https://rest.bitcoin.com/v1/')
+//   .option('-e, --environment <environment>', 'environment of running BITBOX instance. Ex: production, staging. (Default: development)')
+//   .description(`create a new BITBOX application`)
+//   .action((name, options) => {
+//     if(fs.existsSync(`./${name}`)) {
+//       console.log(chalk.red(`Project ${name} already exists`));
+//       process.exit(1);
+//     }
+//
+//       let config;
+//       let environment = fetchOption('environment=development', config, options);
+//       let restURL     = fetchOption('restURL=https://rest.bitcoin.com/v1/', config, options);
+//
+//       if(options && options.scaffold) {
+//         let scaffold = options.scaffold.toLowerCase();
+//         let repo;
+//         let conf = {};
+//         if(scaffold === 'node') {
+//           repo = 'https://github.com/Bitcoin-com/bitbox-scaffold-node.git';
+//         } else if(scaffold === 'angular') {
+//           repo = 'https://github.com/Bitcoin-com/bitbox-scaffold-angular.git';
+//         } else if(scaffold === 'next') {
+//           repo = 'https://github.com/Bitcoin-com/bitbox-scaffold-next.git';
+//         } else if(scaffold === 'react') {
+//           repo = 'https://github.com/Bitcoin-com/bitbox-scaffold-react.git';
+//         } else if(scaffold === 'vue') {
+//           repo = 'https://github.com/Bitcoin-com/bitbox-scaffold-vue.git';
+//         } else {
+//           console.log(chalk.red(`Scaffold ${scaffold} not supported`));
+//           process.exit(1)
+//         }
+//
+//         if(options && options.repo) {
+//           scaffold = 'custom repo';
+//           repo = options.repo.toLowerCase();
+//         }
+//
+//         clear();
+//         console.log(
+//           chalk.blue(
+//             figlet.textSync('BITBOX', {
+//               font: '3-D',
+//               horizontalLayout: 'full'
+//             })
+//           )
+//         );
+//
+//         console.log(chalk.blue(`Scaffolding ${scaffold} app in ${name}`));
+//         clone(repo, `./${name}`, [conf], (res) => {
+//           if(res == "Error: 'git clone' failed with status 128") {
+//             console.log(chalk.red('Must create new app in to an empty directory'));
+//           } else {
+//             console.log(chalk.green('All done.'), emoji.get(':white_check_mark:'));
+//             console.log(chalk.blue('Now `cd` in to your new project and run `npm install && npm start`'), emoji.get(':rocket:'));
+//           }
+//         });
+//         return;
+//       }
+//
+//       console.log(chalk.green(`Creating ${name}/ directory`));
+//       console.log(chalk.green(`Creating src/ directory: ./${name}/src`));
+//       mkdirp(`./${name}/src`, (err) => {});
+//
+//       console.log(chalk.green(`Creating tests/ directory: ./${name}/tests`));
+//       mkdirp(`./${name}/tests`, (err) => {});
+//
+//       console.log(chalk.green(`Creating bitbox.js configuration file: ./${name}/bitbox.js`));
+//
+//       mkdirp(`./${name}`, (err) => {});
+//       touch(`./${name}/bitbox.js`);
+//       fs.writeFileSync( `./${name}/bitbox.js`, `exports.config = {
+//   networks: {
+//     ${environment}: {
+//       restURL: "${restURL}"
+//     }
+//   }
+// };
+// `);
+//       fs.appendFileSync(`./${name}/.gitignore`, '.console_history');
+//       console.log(chalk.blue('All done.'), emoji.get(':white_check_mark:'));
+//       console.log(chalk.blue('Go get em! Remember--with great power comes great responsibility.'), emoji.get(':rocket:'));
+//   }
+// );
+
+program
+  .command('console')
+  .option('-e, --environment <environment>', 'environment of running BITBOX instance. Ex: production, staging. (Default: development)')
+  .description('Run a console with Bitcoin Cash RPC commands available')
+  .action((options) => {
+    let config;
+    try {
+      config = require(process.cwd() + '/wormholecash.js').config;
+    } catch(err) {
+      console.log(chalk.red('Console command must be run inside a wormholecash project'));
+      process.exit(1);
     }
+    let replServer = repl.start('> ');
+    let historyFile = path.join(process.cwd(), '.console_history');
+    require('repl.history')(replServer, historyFile);
 
-    this.BITBOX = new BITBOXCli({
-      restURL: this.restURL
-    });
-    let rootSeed = this.BITBOX.Mnemonic.toSeed(mnemonic);
-    let masterHDNode = this.BITBOX.HDNode.fromSeed(rootSeed, this.net);
-    this.change = this.BITBOX.HDNode.derivePath(masterHDNode, "m/44'/145'/0'/0/0");
-    this.cashAddress = this.BITBOX.HDNode.toCashAddress(this.change);
+    let environment = fetchOption('environment=development', config, options);
+
+    replServer.context.BITBOX = new WormholeCash(config.networks[environment]);
   }
+);
 
-  burn(satoshis) {
-    this.BITBOX.Address.utxo(this.cashAddress).then((result) => {
-      if(!result[0]) {
-        return;
-      }
-
-      // instance of transaction builder
-      let transactionBuilder = new this.BITBOX.TransactionBuilder(this.net);
-      // original amount of satoshis in vin
-      let originalAmount = result[0].satoshis;
-
-      // index of vout
-      let vout = result[0].vout;
-
-      // txid of vout
-      let txid = result[0].txid;
-
-      // add input with txid and index of vout
-      transactionBuilder.addInput(txid, vout);
-
-      // amount to send to receiver. It's the original amount - 1 sat/byte for tx size
-      let sendAmount = originalAmount - 211;
-
-      // add Wormhole burner address and amount to send
-      let out;
-      if(this.net === 'bitcoincash') {
-        out = 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqu08dsyxz98whc';
-      } else {
-        out = 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqdmwgvnjkt8whc';
-      }
-      transactionBuilder.addOutput(out, sendAmount);
-      // let data = Buffer.from("0877686300000044");
-      let data = "0877686300000044";
-      let buf = this.BITBOX.Script.nullData.output.encode(Buffer.from(data, 'hex'));
-      transactionBuilder.addOutput(buf, 0);
-
-      // keypair
-      let keyPair = this.BITBOX.HDNode.toKeyPair(this.change);
-
-      // sign w/ HDNode
-      let redeemScript;
-      transactionBuilder.sign(0, keyPair, redeemScript, transactionBuilder.hashTypes.SIGHASH_ALL, originalAmount);
-
-      // build tx
-      let tx = transactionBuilder.build();
-      // output rawhex
-      let hex = tx.toHex();
-      console.log(hex);
-
-      // sendRawTransaction to running BCH node
-      this.BITBOX.RawTransactions.sendRawTransaction(hex).then((result) => {
-        console.log(result);
-      }, (err) => {
-        console.log(err);
-      });
-    }, (err) => {
-      console.log(err);
-    });
+function fetchOption(kv, config, options) {
+  let parts = kv.split('=');
+  let key = parts[0];
+  let defaultVal = parts[1];
+  if(options && options[key]) {
+    return options[key];
+  } else if(config && config.new && config.new[key]) {
+    return config.new[key];
+  } else {
+    return defaultVal;
   }
+}
+
+program
+  .parse(process.argv);
+
+// print help if no command given
+if (!process.argv.slice(2).length) {
+  program.outputHelp()
 }
