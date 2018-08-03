@@ -2,7 +2,7 @@ let BITBOXCli = require('bitbox-cli/lib/bitbox-cli').default;
 import Configuration from './Configuration';
 import DataRetrieval from './DataRetrieval';
 
-class WormholeCash {
+class Wormhole {
   constructor(config) {
     if(config && config.restURL && config.restURL !== '') {
       this.restURL = config.restURL;
@@ -17,4 +17,4 @@ class WormholeCash {
   }
 }
 
-export default WormholeCash;
+export default Wormhole;

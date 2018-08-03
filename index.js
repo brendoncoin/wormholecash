@@ -13,13 +13,13 @@ let touch = require("touch");
 let emoji = require('node-emoji');
 let repl = require("repl");
 let ini = require('ini');
-let BITBOXCli = require('./lib/bitbox-cli').default;
+let Wormhole = require('./lib/wormhole').default;
 let clone = require('git-clone');
 let corsproxy = require('corsproxy');
 let cmd = require('node-cmd');
 
 program
-  .version('0.0.9');
+  .version('0.0.10');
 //
 // program
 //   .command('new <name>')
@@ -115,7 +115,7 @@ program
   .action((options) => {
     let config;
     try {
-      config = require(process.cwd() + '/wormholecash.js').config;
+      config = require(process.cwd() + '/wormhole.js').config;
     } catch(err) {
       console.log(chalk.red('Console command must be run inside a wormholecash project'));
       process.exit(1);
@@ -126,7 +126,7 @@ program
 
     let environment = fetchOption('environment=development', config, options);
 
-    replServer.context.BITBOX = new WormholeCash(config.networks[environment]);
+    replServer.context.Wormhole = new Wormhole(config.networks[environment]);
   }
 );
 
