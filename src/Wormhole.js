@@ -2,6 +2,7 @@ let BITBOXCli = require('bitbox-cli/lib/bitbox-cli').default;
 import Configuration from './Configuration';
 import DataRetrieval from './DataRetrieval';
 import PayloadCreation from './PayloadCreation';
+import RawTransactions from './RawTransactions';
 
 class Wormhole {
   constructor(config) {
@@ -14,6 +15,7 @@ class Wormhole {
     this.Configuration = new Configuration(this.restURL);
     this.DataRetrieval = new DataRetrieval(this.restURL);
     this.PayloadCreation = new PayloadCreation(this.restURL);
+    this.RawTransactions = new RawTransactions(this.restURL);
 
     this.BITBOX = new BITBOXCli();
   }
