@@ -1,7 +1,7 @@
 {
   "name": "wormholecash",
-  "version": "0.0.8",
-  "description": "BITBOX lib for WormholeCash",
+  "version": "0.0.9",
+  "description": "BITBOX lib for Wormhole",
   "main": "index.js",
   "scripts": {
     "build": "babel src/ -d lib/",
@@ -11,6 +11,9 @@
   "license": "MIT",
   "engines": {
     "node": ">=8.11.0"
+  },
+  "bin": {
+    "wormhole": "./index.js"
   },
   "repository": {
     "type": "git",
