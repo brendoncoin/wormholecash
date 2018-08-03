@@ -11,7 +11,7 @@ class Wormhole {
     }
 
     this.Configuration = new Configuration(this.restURL);
-    this.Configuration = new DataRetrieval(this.restURL);
+    this.DataRetrieval = new DataRetrieval(this.restURL);
 
     this.BITBOX = new BITBOXCli();
   }
