@@ -12,7 +12,7 @@ class Configuration {
       final = 'false';
     }
 
-    return axios.get(`${this.restURL}configuration/whcSetAutoCommit/${final}`)
+    return axios.post(`${this.restURL}configuration/whcSetAutoCommit/${final}`)
     .then((response) => {
       return response.data;
     })
