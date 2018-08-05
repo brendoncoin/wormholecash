@@ -4,8 +4,8 @@ class PayloadCreation {
     this.restURL = restURL;
   }
 
-  whcCreatePayloadBurnBCH() {
-    return axios.get(`${this.restURL}dataRetrieval/whcCreatePayloadBurnBCH`)
+  createPayloadBurnBCH() {
+    return axios.get(`${this.restURL}dataRetrieval/createPayloadBurnBCH`)
     .then((response) => {
       return response.data;
     })
@@ -14,8 +14,8 @@ class PayloadCreation {
     });
   }
 
-  whcCreatePayloadChangeIssuer(propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/whcCreatePayloadChangeIssuer/${propertyId}`)
+  createPayloadChangeIssuer(propertyId) {
+    return axios.get(`${this.restURL}dataRetrieval/createPayloadChangeIssuer/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -24,8 +24,8 @@ class PayloadCreation {
     });
   }
 
-  whcCreatePayloadCloseCrowdSale(propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/whcCreatePayloadCloseCrowdSale/${propertyId}`)
+  createPayloadCloseCrowdSale(propertyId) {
+    return axios.get(`${this.restURL}dataRetrieval/createPayloadCloseCrowdSale/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -34,8 +34,8 @@ class PayloadCreation {
     });
   }
 
-  whcCreatePayloadGrant(propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/whcCreatePayloadGrant/${propertyId}`)
+  createPayloadGrant(propertyId) {
+    return axios.get(`${this.restURL}dataRetrieval/createPayloadGrant/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -44,8 +44,8 @@ class PayloadCreation {
     });
   }
 
-  whcCreatePayloadIssuanceCrowdsale(ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, propertyIdDesired, tokensPerUnit, deadline, earlyBonus, undefine, totalNumber) {
-    return axios.get(`${this.restURL}dataRetrieval/whcCreatePayloadIssuanceCrowdsale/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${propertyIdDesired}/${tokensPerUnit}/${deadline}/${earlyBonus}/${undefine}/${totalNumber}`)
+  createPayloadIssuanceCrowdsale(ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, propertyIdDesired, tokensPerUnit, deadline, earlyBonus, undefine, totalNumber) {
+    return axios.get(`${this.restURL}dataRetrieval/createPayloadIssuanceCrowdsale/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${propertyIdDesired}/${tokensPerUnit}/${deadline}/${earlyBonus}/${undefine}/${totalNumber}`)
     .then((response) => {
       return response.data;
     })
@@ -54,8 +54,8 @@ class PayloadCreation {
     });
   }
 
-  whcCreatePayloadIssuanceFixed(ecosystem, propertyPricision, previousId, category, subcategory, name, amount) {
-    return axios.get(`${this.restURL}dataRetrieval/whcCreatePayloadIssuanceFixed/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${amount}`)
+  createPayloadIssuanceFixed(ecosystem, propertyPricision, previousId, category, subcategory, name, amount) {
+    return axios.get(`${this.restURL}dataRetrieval/createPayloadIssuanceFixed/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${amount}`)
     .then((response) => {
       return response.data;
     })
@@ -64,8 +64,8 @@ class PayloadCreation {
     });
   }
 
-  whcCreatePayloadIssuanceManaged(ecosystem, propertyPricision, previousId, category, subcategory, name, data) {
-    return axios.get(`${this.restURL}dataRetrieval/whcCreatePayloadIssuanceManaged/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${data}`)
+  createPayloadIssuanceManaged(ecosystem, propertyPricision, previousId, category, subcategory, name, data) {
+    return axios.get(`${this.restURL}dataRetrieval/createPayloadIssuanceManaged/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${data}`)
     .then((response) => {
       return response.data;
     })
@@ -74,8 +74,8 @@ class PayloadCreation {
     });
   }
 
-  whcCreatePayloadParticrwoSale(amount) {
-    return axios.get(`${this.restURL}dataRetrieval/whcCreatePayloadParticrwoSale/${amount}`)
+  createPayloadParticrwoSale(amount) {
+    return axios.get(`${this.restURL}dataRetrieval/createPayloadParticrwoSale/${amount}`)
     .then((response) => {
       return response.data;
     })
@@ -84,8 +84,8 @@ class PayloadCreation {
     });
   }
 
-  whcCreatePayloadRevoke(propertyId, amount) {
-    return axios.get(`${this.restURL}dataRetrieval/whcCreatePayloadRevoke/${propertyId}/${amount}`)
+  createPayloadRevoke(propertyId, amount) {
+    return axios.get(`${this.restURL}dataRetrieval/createPayloadRevoke/${propertyId}/${amount}`)
     .then((response) => {
       return response.data;
     })
@@ -94,8 +94,8 @@ class PayloadCreation {
     });
   }
 
-  whcCreatePayloadSendAll(ecosystem) {
-    return axios.get(`${this.restURL}dataRetrieval/whcCreatePayloadSendAll/${ecosystem}`)
+  createPayloadSendAll(ecosystem) {
+    return axios.get(`${this.restURL}dataRetrieval/createPayloadSendAll/${ecosystem}`)
     .then((response) => {
       return response.data;
     })
@@ -104,8 +104,8 @@ class PayloadCreation {
     });
   }
 
-  whcCreatePayloadSimpleSend(propertyId, amount) {
-    return axios.get(`${this.restURL}dataRetrieval/whcCreatePayloadSimpleSend/${propertyId}/${amount}`)
+  createPayloadSimpleSend(propertyId, amount) {
+    return axios.get(`${this.restURL}dataRetrieval/createPayloadSimpleSend/${propertyId}/${amount}`)
     .then((response) => {
       return response.data;
     })
@@ -114,8 +114,8 @@ class PayloadCreation {
     });
   }
 
-  whcCreatePayloadSTO(propertyId, amount) {
-    return axios.get(`${this.restURL}dataRetrieval/whcCreatePayloadSTO/${propertyId}/${amount}`)
+  createPayloadSTO(propertyId, amount) {
+    return axios.get(`${this.restURL}dataRetrieval/createPayloadSTO/${propertyId}/${amount}`)
     .then((response) => {
       return response.data;
     })

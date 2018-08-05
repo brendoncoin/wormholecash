@@ -4,8 +4,8 @@ class RawTransactions {
     this.restURL = restURL;
   }
 
-  whcCreateRawTxChange(rawtx, prevTxs, destination, fee) {
-    return axios.get(`${this.restURL}rawTransactions/whcCreateRawTxChange/${rawtx}/${prevTxs}/${destination}/${fee}`)
+  createRawTxChange(rawtx, prevTxs, destination, fee) {
+    return axios.get(`${this.restURL}rawTransactions/createRawTxChange/${rawtx}/${prevTxs}/${destination}/${fee}`)
     .then((response) => {
       return response.data;
     })
@@ -14,8 +14,8 @@ class RawTransactions {
     });
   }
 
-  whcCreateRawTxInput(rawtx, txid, n) {
-    return axios.get(`${this.restURL}rawTransactions/whcCreateRawTxInput/${rawtx}/${txid}/${n}`)
+  createRawTxInput(rawtx, txid, n) {
+    return axios.get(`${this.restURL}rawTransactions/createRawTxInput/${rawtx}/${txid}/${n}`)
     .then((response) => {
       return response.data;
     })
@@ -24,8 +24,8 @@ class RawTransactions {
     });
   }
 
-  whcCreateRawTxOpReturn(rawtx, payload) {
-    return axios.get(`${this.restURL}rawTransactions/whcCreateRawTxOpReturn/${rawtx}/${payload}`)
+  createRawTxOpReturn(rawtx, payload) {
+    return axios.get(`${this.restURL}rawTransactions/createRawTxOpReturn/${rawtx}/${payload}`)
     .then((response) => {
       return response.data;
     })
@@ -34,8 +34,8 @@ class RawTransactions {
     });
   }
 
-  whcCreateRawTxReference(rawtx, destination, amount) {
-    return axios.get(`${this.restURL}rawTransactions/whcCreateRawTxReference/${rawtx}/${destination}/${amount}`)
+  createRawTxReference(rawtx, destination, amount) {
+    return axios.get(`${this.restURL}rawTransactions/createRawTxReference/${rawtx}/${destination}/${amount}`)
     .then((response) => {
       return response.data;
     })
@@ -44,8 +44,8 @@ class RawTransactions {
     });
   }
 
-  whcDecodeTransaction(rawtx) {
-    return axios.get(`${this.restURL}rawTransactions/whcDecodeTransaction/${rawtx}`)
+  decodeTransaction(rawtx) {
+    return axios.get(`${this.restURL}rawTransactions/decodeTransaction/${rawtx}`)
     .then((response) => {
       return response.data;
     })
@@ -54,8 +54,8 @@ class RawTransactions {
     });
   }
 
-  whcDecodeTransaction(rawtx) {
-    return axios.get(`${this.restURL}rawTransactions/whcDecodeTransaction/${rawtx}`)
+  decodeTransaction(rawtx) {
+    return axios.get(`${this.restURL}rawTransactions/decodeTransaction/${rawtx}`)
     .then((response) => {
       return response.data;
     })
