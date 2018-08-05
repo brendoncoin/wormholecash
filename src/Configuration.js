@@ -4,9 +4,15 @@ class Configuration {
     this.restURL = restURL;
   }
 
-  whcSetAutocommit(flag = true) {
+  whcSetAutoCommit(flag = true) {
+    let final;
+    if(flag === true) {
+      final = 'true';
+    } else {
+      final = 'false';
+    }
 
-    return axios.get(`${this.restURL}configuration/whcSetAutocommit/${flag}`)
+    return axios.get(`${this.restURL}configuration/whcSetAutoCommit/${final}`)
     .then((response) => {
       return response.data;
     })
