@@ -1,6 +1,6 @@
 {
   "name": "wormholecash",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "BITBOX lib for Wormhole",
   "main": "index.js",
   "scripts": {

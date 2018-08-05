@@ -165,7 +165,7 @@ class DataRetrieval {
   }
 
   listProperties() {
-    return axios.get(`${this.restURL}dataRetrieval/listPendingTransactions`)
+    return axios.get(`${this.restURL}dataRetrieval/listProperties`)
     .then((response) => {
       return response.data;
     })
