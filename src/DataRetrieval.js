@@ -84,8 +84,8 @@ class DataRetrieval {
     });
   }
 
-  whcGetinfo() {
-    return axios.get(`${this.restURL}dataRetrieval/whcGetinfo`)
+  whcGetInfo() {
+    return axios.get(`${this.restURL}dataRetrieval/whcGetInfo`)
     .then((response) => {
       return response.data;
     })
