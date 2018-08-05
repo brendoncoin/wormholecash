@@ -4,8 +4,8 @@ class PayloadCreation {
     this.restURL = restURL;
   }
 
-  createPayloadBurnBCH() {
-    return axios.get(`${this.restURL}dataRetrieval/createPayloadBurnBCH`)
+  burnBCH() {
+    return axios.get(`${this.restURL}payloadCreation/burnBCH`)
     .then((response) => {
       return response.data;
     })
@@ -14,8 +14,8 @@ class PayloadCreation {
     });
   }
 
-  createPayloadChangeIssuer(propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/createPayloadChangeIssuer/${propertyId}`)
+  changeIssuer(propertyId) {
+    return axios.get(`${this.restURL}payloadCreation/changeIssuer/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -24,8 +24,8 @@ class PayloadCreation {
     });
   }
 
-  createPayloadCloseCrowdSale(propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/createPayloadCloseCrowdSale/${propertyId}`)
+  closeCrowdSale(propertyId) {
+    return axios.get(`${this.restURL}payloadCreation/closeCrowdSale/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -34,8 +34,8 @@ class PayloadCreation {
     });
   }
 
-  createPayloadGrant(propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/createPayloadGrant/${propertyId}`)
+  grant(propertyId) {
+    return axios.get(`${this.restURL}payloadCreation/grant/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -44,8 +44,8 @@ class PayloadCreation {
     });
   }
 
-  createPayloadIssuanceCrowdsale(ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, propertyIdDesired, tokensPerUnit, deadline, earlyBonus, undefine, totalNumber) {
-    return axios.get(`${this.restURL}dataRetrieval/createPayloadIssuanceCrowdsale/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${propertyIdDesired}/${tokensPerUnit}/${deadline}/${earlyBonus}/${undefine}/${totalNumber}`)
+  issuanceCrowdsale(ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, propertyIdDesired, tokensPerUnit, deadline, earlyBonus, undefine, totalNumber) {
+    return axios.get(`${this.restURL}payloadCreation/issuanceCrowdsale/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${propertyIdDesired}/${tokensPerUnit}/${deadline}/${earlyBonus}/${undefine}/${totalNumber}`)
     .then((response) => {
       return response.data;
     })
@@ -54,8 +54,8 @@ class PayloadCreation {
     });
   }
 
-  createPayloadIssuanceFixed(ecosystem, propertyPricision, previousId, category, subcategory, name, amount) {
-    return axios.get(`${this.restURL}dataRetrieval/createPayloadIssuanceFixed/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${amount}`)
+  issuanceFixed(ecosystem, propertyPricision, previousId, category, subcategory, name, amount) {
+    return axios.get(`${this.restURL}payloadCreation/issuanceFixed/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${amount}`)
     .then((response) => {
       return response.data;
     })
@@ -64,8 +64,8 @@ class PayloadCreation {
     });
   }
 
-  createPayloadIssuanceManaged(ecosystem, propertyPricision, previousId, category, subcategory, name, data) {
-    return axios.get(`${this.restURL}dataRetrieval/createPayloadIssuanceManaged/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${data}`)
+  managed(ecosystem, propertyPricision, previousId, category, subcategory, name, data) {
+    return axios.get(`${this.restURL}payloadCreation/managed/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${data}`)
     .then((response) => {
       return response.data;
     })
@@ -74,8 +74,8 @@ class PayloadCreation {
     });
   }
 
-  createPayloadParticrwoSale(amount) {
-    return axios.get(`${this.restURL}dataRetrieval/createPayloadParticrwoSale/${amount}`)
+  partiCrwoSale(amount) {
+    return axios.get(`${this.restURL}payloadCreation/partiCrwoSale/${amount}`)
     .then((response) => {
       return response.data;
     })
@@ -84,8 +84,8 @@ class PayloadCreation {
     });
   }
 
-  createPayloadRevoke(propertyId, amount) {
-    return axios.get(`${this.restURL}dataRetrieval/createPayloadRevoke/${propertyId}/${amount}`)
+  revoke(propertyId, amount) {
+    return axios.get(`${this.restURL}payloadCreation/revoke/${propertyId}/${amount}`)
     .then((response) => {
       return response.data;
     })
@@ -94,8 +94,8 @@ class PayloadCreation {
     });
   }
 
-  createPayloadSendAll(ecosystem) {
-    return axios.get(`${this.restURL}dataRetrieval/createPayloadSendAll/${ecosystem}`)
+  sendAll(ecosystem) {
+    return axios.get(`${this.restURL}payloadCreation/sendAll/${ecosystem}`)
     .then((response) => {
       return response.data;
     })
@@ -104,8 +104,8 @@ class PayloadCreation {
     });
   }
 
-  createPayloadSimpleSend(propertyId, amount) {
-    return axios.get(`${this.restURL}dataRetrieval/createPayloadSimpleSend/${propertyId}/${amount}`)
+  simpleSend(propertyId, amount) {
+    return axios.get(`${this.restURL}payloadCreation/simpleSend/${propertyId}/${amount}`)
     .then((response) => {
       return response.data;
     })
@@ -114,8 +114,8 @@ class PayloadCreation {
     });
   }
 
-  createPayloadSTO(propertyId, amount) {
-    return axios.get(`${this.restURL}dataRetrieval/createPayloadSTO/${propertyId}/${amount}`)
+  STO(propertyId, amount) {
+    return axios.get(`${this.restURL}payloadCreation/STO/${propertyId}/${amount}`)
     .then((response) => {
       return response.data;
     })
