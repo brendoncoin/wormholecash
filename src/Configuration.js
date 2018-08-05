@@ -4,7 +4,7 @@ class Configuration {
     this.restURL = restURL;
   }
 
-  whcSetAutoCommit(flag = true) {
+  setAutoCommit(flag = true) {
     let final;
     if(flag === true) {
       final = 'true';
@@ -12,7 +12,7 @@ class Configuration {
       final = 'false';
     }
 
-    return axios.post(`${this.restURL}configuration/whcSetAutoCommit/${final}`)
+    return axios.post(`${this.restURL}configuration/setAutoCommit/${final}`)
     .then((response) => {
       return response.data;
     })
