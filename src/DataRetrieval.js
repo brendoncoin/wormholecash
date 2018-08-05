@@ -124,8 +124,8 @@ class DataRetrieval {
     });
   }
 
-  whcGetSto(txid, recipientFilter) {
-    return axios.get(`${this.restURL}dataRetrieval/whcGetSto/${txid}/${recipientFilter}`)
+  whcGetSTO(txid, recipientFilter) {
+    return axios.get(`${this.restURL}dataRetrieval/whcGetSTO/${txid}/${recipientFilter}`)
     .then((response) => {
       return response.data;
     })
