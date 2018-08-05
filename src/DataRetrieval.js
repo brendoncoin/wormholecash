@@ -4,8 +4,8 @@ class DataRetrieval {
     this.restURL = restURL;
   }
 
-  whcGetAllBalancesForAddress(address) {
-    return axios.get(`${this.restURL}dataRetrieval/whcGetAllBalancesForAddress/${address}`)
+  getAllBalancesForAddress(address) {
+    return axios.get(`${this.restURL}dataRetrieval/getAllBalancesForAddress/${address}`)
     .then((response) => {
       return response.data;
     })
@@ -14,8 +14,8 @@ class DataRetrieval {
     });
   }
 
-  whcGetAllBalancesForId(propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/whcGetAllBalancesForId/${propertyId}`)
+  getAllBalancesForId(propertyId) {
+    return axios.get(`${this.restURL}dataRetrieval/getAllBalancesForId/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -24,8 +24,8 @@ class DataRetrieval {
     });
   }
 
-  whcGetBalance(address, propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/whcGetBalance/${address}/${propertyId}`)
+  getBalance(address, propertyId) {
+    return axios.get(`${this.restURL}dataRetrieval/getBalance/${address}/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -34,8 +34,8 @@ class DataRetrieval {
     });
   }
 
-  whcGetBalancesHash(propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/whcGetBalancesHash/${propertyId}`)
+  getBalancesHash(propertyId) {
+    return axios.get(`${this.restURL}dataRetrieval/getBalancesHash/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -44,8 +44,8 @@ class DataRetrieval {
     });
   }
 
-  whcGetCrowdSale(propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/whcGetCrowdSale/${propertyId}`)
+  getCrowdSale(propertyId) {
+    return axios.get(`${this.restURL}dataRetrieval/getCrowdSale/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -54,8 +54,8 @@ class DataRetrieval {
     });
   }
 
-  whcGetCurrentConsensusHash() {
-    return axios.get(`${this.restURL}dataRetrieval/whcGetCurrentConsensusHash`)
+  getCurrentConsensusHash() {
+    return axios.get(`${this.restURL}dataRetrieval/getCurrentConsensusHash`)
     .then((response) => {
       return response.data;
     })
@@ -64,8 +64,8 @@ class DataRetrieval {
     });
   }
 
-  whcGetFeeShare() {
-    return axios.get(`${this.restURL}dataRetrieval/whcGetFeeShare`)
+  getFeeShare() {
+    return axios.get(`${this.restURL}dataRetrieval/getFeeShare`)
     .then((response) => {
       return response.data;
     })
@@ -74,8 +74,8 @@ class DataRetrieval {
     });
   }
 
-  whcGetGrants(propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/whcGetGrants/${propertyId}`)
+  getGrants(propertyId) {
+    return axios.get(`${this.restURL}dataRetrieval/getGrants/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -84,8 +84,8 @@ class DataRetrieval {
     });
   }
 
-  whcGetInfo() {
-    return axios.get(`${this.restURL}dataRetrieval/whcGetInfo`)
+  getInfo() {
+    return axios.get(`${this.restURL}dataRetrieval/getInfo`)
     .then((response) => {
       return response.data;
     })
@@ -94,8 +94,8 @@ class DataRetrieval {
     });
   }
 
-  whcGetPayload(txid) {
-    return axios.get(`${this.restURL}dataRetrieval/whcGetPayload/${txid}`)
+  getPayload(txid) {
+    return axios.get(`${this.restURL}dataRetrieval/getPayload/${txid}`)
     .then((response) => {
       return response.data;
     })
@@ -104,8 +104,8 @@ class DataRetrieval {
     });
   }
 
-  whcGetProperty(propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/whcGetProperty/${propertyId}`)
+  getProperty(propertyId) {
+    return axios.get(`${this.restURL}dataRetrieval/getProperty/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -114,8 +114,8 @@ class DataRetrieval {
     });
   }
 
-  whcGetSeedBlocks(startBlock, endBlock) {
-    return axios.get(`${this.restURL}dataRetrieval/whcGetSeedBlocks/${startBlock}/${endBlock}`)
+  getSeedBlocks(startBlock, endBlock) {
+    return axios.get(`${this.restURL}dataRetrieval/getSeedBlocks/${startBlock}/${endBlock}`)
     .then((response) => {
       return response.data;
     })
@@ -124,8 +124,8 @@ class DataRetrieval {
     });
   }
 
-  whcGetSTO(txid, recipientFilter) {
-    return axios.get(`${this.restURL}dataRetrieval/whcGetSTO/${txid}/${recipientFilter}`)
+  getSTO(txid, recipientFilter) {
+    return axios.get(`${this.restURL}dataRetrieval/getSTO/${txid}/${recipientFilter}`)
     .then((response) => {
       return response.data;
     })
@@ -134,8 +134,8 @@ class DataRetrieval {
     });
   }
 
-  whcGetTransaction(txid) {
-    return axios.get(`${this.restURL}dataRetrieval/whcGetTransaction/${txid}`)
+  getTransaction(txid) {
+    return axios.get(`${this.restURL}dataRetrieval/getTransaction/${txid}`)
     .then((response) => {
       return response.data;
     })
@@ -144,8 +144,8 @@ class DataRetrieval {
     });
   }
 
-  whcListBlockTransactions(index) {
-    return axios.get(`${this.restURL}dataRetrieval/whcListBlockTransactions/${index}`)
+  listBlockTransactions(index) {
+    return axios.get(`${this.restURL}dataRetrieval/listBlockTransactions/${index}`)
     .then((response) => {
       return response.data;
     })
@@ -154,8 +154,8 @@ class DataRetrieval {
     });
   }
 
-  whcListPendingTransactions(address) {
-    return axios.get(`${this.restURL}dataRetrieval/whcListPendingTransactions/${address}`)
+  listPendingTransactions(address) {
+    return axios.get(`${this.restURL}dataRetrieval/listPendingTransactions/${address}`)
     .then((response) => {
       return response.data;
     })
@@ -164,8 +164,8 @@ class DataRetrieval {
     });
   }
 
-  whcListProperties() {
-    return axios.get(`${this.restURL}dataRetrieval/whcListPendingTransactions`)
+  listProperties() {
+    return axios.get(`${this.restURL}dataRetrieval/listPendingTransactions`)
     .then((response) => {
       return response.data;
     })
@@ -174,8 +174,8 @@ class DataRetrieval {
     });
   }
 
-  whcListTransactions() {
-    return axios.get(`${this.restURL}dataRetrieval/whcListTransactions`)
+  listTransactions() {
+    return axios.get(`${this.restURL}dataRetrieval/listTransactions`)
     .then((response) => {
       return response.data;
     })
