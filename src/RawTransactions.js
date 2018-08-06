@@ -4,8 +4,8 @@ class RawTransactions {
     this.restURL = restURL;
   }
 
-  createRawTxChange(rawtx, prevTxs, destination, fee) {
-    return axios.get(`${this.restURL}rawTransactions/createRawTxChange/${rawtx}/${prevTxs}/${destination}/${fee}`)
+  change(rawtx, prevTxs, destination, fee) {
+    return axios.get(`${this.restURL}rawTransactions/change/${rawtx}/${prevTxs}/${destination}/${fee}`)
     .then((response) => {
       return response.data;
     })
@@ -14,8 +14,8 @@ class RawTransactions {
     });
   }
 
-  createRawTxInput(rawtx, txid, n) {
-    return axios.get(`${this.restURL}rawTransactions/createRawTxInput/${rawtx}/${txid}/${n}`)
+  input(rawtx, txid, n) {
+    return axios.get(`${this.restURL}rawTransactions/input/${rawtx}/${txid}/${n}`)
     .then((response) => {
       return response.data;
     })
@@ -24,8 +24,8 @@ class RawTransactions {
     });
   }
 
-  createRawTxOpReturn(rawtx, payload) {
-    return axios.get(`${this.restURL}rawTransactions/createRawTxOpReturn/${rawtx}/${payload}`)
+  opReturn(rawtx, payload) {
+    return axios.get(`${this.restURL}rawTransactions/opReturn/${rawtx}/${payload}`)
     .then((response) => {
       return response.data;
     })
@@ -34,18 +34,8 @@ class RawTransactions {
     });
   }
 
-  createRawTxReference(rawtx, destination, amount) {
-    return axios.get(`${this.restURL}rawTransactions/createRawTxReference/${rawtx}/${destination}/${amount}`)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((error) => {
-      return JSON.stringify(error.response.data.error.message);
-    });
-  }
-
-  decodeTransaction(rawtx) {
-    return axios.get(`${this.restURL}rawTransactions/decodeTransaction/${rawtx}`)
+  reference(rawtx, destination, amount) {
+    return axios.get(`${this.restURL}rawTransactions/reference/${rawtx}/${destination}/${amount}`)
     .then((response) => {
       return response.data;
     })
