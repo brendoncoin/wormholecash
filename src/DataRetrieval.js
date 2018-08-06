@@ -155,7 +155,11 @@ class DataRetrieval {
   }
 
   listPendingTransactions(address) {
-    return axios.get(`${this.restURL}dataRetrieval/listPendingTransactions/${address}`)
+    let path = `${this.restURL}dataRetrieval/listPendingTransactions`;
+    if(address) {
+      path = `${this.restURL}dataRetrieval/listPendingTransactions?address=${address}`
+    }
+    return axios.get(path)
     .then((response) => {
       return response.data;
     })
