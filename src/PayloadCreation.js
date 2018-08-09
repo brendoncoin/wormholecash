@@ -15,7 +15,7 @@ class PayloadCreation {
   }
 
   changeIssuer(propertyId) {
-    return axios.get(`${this.restURL}payloadCreation/changeIssuer/${propertyId}`)
+    return axios.post(`${this.restURL}payloadCreation/changeIssuer/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -25,7 +25,7 @@ class PayloadCreation {
   }
 
   closeCrowdSale(propertyId) {
-    return axios.get(`${this.restURL}payloadCreation/closeCrowdSale/${propertyId}`)
+    return axios.post(`${this.restURL}payloadCreation/closeCrowdSale/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -35,7 +35,7 @@ class PayloadCreation {
   }
 
   grant(propertyId) {
-    return axios.get(`${this.restURL}payloadCreation/grant/${propertyId}`)
+    return axios.post(`${this.restURL}payloadCreation/grant/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -45,7 +45,7 @@ class PayloadCreation {
   }
 
   issuanceCrowdsale(ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, propertyIdDesired, tokensPerUnit, deadline, earlyBonus, undefine, totalNumber) {
-    return axios.get(`${this.restURL}payloadCreation/issuanceCrowdsale/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${propertyIdDesired}/${tokensPerUnit}/${deadline}/${earlyBonus}/${undefine}/${totalNumber}`)
+    return axios.post(`${this.restURL}payloadCreation/issuanceCrowdsale/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${propertyIdDesired}/${tokensPerUnit}/${deadline}/${earlyBonus}/${undefine}/${totalNumber}`)
     .then((response) => {
       return response.data;
     })
@@ -55,7 +55,7 @@ class PayloadCreation {
   }
 
   issuanceFixed(ecosystem, propertyPricision, previousId, category, subcategory, name, amount) {
-    return axios.get(`${this.restURL}payloadCreation/issuanceFixed/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${amount}`)
+    return axios.post(`${this.restURL}payloadCreation/issuanceFixed/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${amount}`)
     .then((response) => {
       return response.data;
     })
@@ -65,7 +65,7 @@ class PayloadCreation {
   }
 
   managed(ecosystem, propertyPricision, previousId, category, subcategory, name, data) {
-    return axios.get(`${this.restURL}payloadCreation/managed/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${data}`)
+    return axios.post(`${this.restURL}payloadCreation/managed/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${data}`)
     .then((response) => {
       return response.data;
     })
@@ -75,7 +75,7 @@ class PayloadCreation {
   }
 
   partiCrwoSale(amount) {
-    return axios.get(`${this.restURL}payloadCreation/partiCrwoSale/${amount}`)
+    return axios.post(`${this.restURL}payloadCreation/partiCrwoSale/${amount}`)
     .then((response) => {
       return response.data;
     })
@@ -85,7 +85,7 @@ class PayloadCreation {
   }
 
   revoke(propertyId, amount) {
-    return axios.get(`${this.restURL}payloadCreation/revoke/${propertyId}/${amount}`)
+    return axios.post(`${this.restURL}payloadCreation/revoke/${propertyId}/${amount}`)
     .then((response) => {
       return response.data;
     })
@@ -95,7 +95,7 @@ class PayloadCreation {
   }
 
   sendAll(ecosystem) {
-    return axios.get(`${this.restURL}payloadCreation/sendAll/${ecosystem}`)
+    return axios.post(`${this.restURL}payloadCreation/sendAll/${ecosystem}`)
     .then((response) => {
       return response.data;
     })
@@ -105,7 +105,7 @@ class PayloadCreation {
   }
 
   simpleSend(propertyId, amount) {
-    return axios.get(`${this.restURL}payloadCreation/simpleSend/${propertyId}/${amount}`)
+    return axios.post(`${this.restURL}payloadCreation/simpleSend/${propertyId}/${amount}`)
     .then((response) => {
       return response.data;
     })
@@ -115,7 +115,7 @@ class PayloadCreation {
   }
 
   STO(propertyId, amount) {
-    return axios.get(`${this.restURL}payloadCreation/STO/${propertyId}/${amount}`)
+    return axios.post(`${this.restURL}payloadCreation/STO/${propertyId}/${amount}`)
     .then((response) => {
       return response.data;
     })
