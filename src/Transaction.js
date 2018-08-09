@@ -4,8 +4,14 @@ class Transaction {
     this.restURL = restURL;
   }
 
-  burnBCHGetWHC(amount) {
-    return axios.get(`${this.restURL}transaction/burnBCHGetWHC/${amount}`)
+  burnBCHGetWHC(amount, redeemAddress = undefined) {
+    let path;
+    if(redeemAddress) {
+      path = `${this.restURL}transaction/burnBCHGetWHC/${amount}?redeemAddress=${redeemAddress}`;
+    } else {
+      path = `${this.restURL}transaction/burnBCHGetWHC/${amount}`;
+    }
+    return axios.get(path)
     .then((response) => {
       return response.data;
     })
@@ -14,8 +20,18 @@ class Transaction {
     });
   }
 
-  partiCrowSale(fromAddress, toAddress, amount) {
-    return axios.get(`${this.restURL}transaction/partiCrowSale/${fromAddress}/${toAddress}/${amount}`)
+  partiCrowSale(fromAddress, toAddress, amount, redeemAddress = undefined, referenceAmount = undefined) {
+    let path;
+    if(redeemAddress) {
+      path = `${this.restURL}transaction/partiCrowSale/${fromAddress}/${toAddress}/${amount}?redeemAddress=${redeemAddress}`;
+    } else if(redeemAddress && referenceAmount) {
+      path = `${this.restURL}transaction/partiCrowSale/${fromAddress}/${toAddress}/${amount}?redeemAddress=${redeemAddress}&referenceAmount=${referenceAmount}`;
+    } else if(referenceAmount) {
+      path = `${this.restURL}transaction/partiCrowSale/${fromAddress}/${toAddress}/${amount}?referenceAmount=${referenceAmount}`;
+    } else {
+      path = `${this.restURL}transaction/partiCrowSale/${fromAddress}/${toAddress}/${amount}`;
+    }
+    return axios.get(path)
     .then((response) => {
       return response.data;
     })
@@ -24,8 +40,18 @@ class Transaction {
     });
   }
 
-  send(fromAddress, toAddress, propertyId, amount) {
-    return axios.get(`${this.restURL}transaction/send/${fromAddress}/${toAddress}/${propertyId}/${amount}`)
+  send(fromAddress, toAddress, propertyId, amount, redeemAddress = undefined, referenceAmount = undefined) {
+    let path;
+    if(redeemAddress) {
+      path = `${this.restURL}transaction/send/${fromAddress}/${toAddress}/${propertyId}/${amount}?redeemAddress=${redeemAddress}`;
+    } else if(redeemAddress && referenceAmount) {
+      path = `${this.restURL}transaction/send/${fromAddress}/${toAddress}/${propertyId}/${amount}?redeemAddress=${redeemAddress}&referenceAmount=${referenceAmount}`;
+    } else if(referenceAmount) {
+      path = `${this.restURL}transaction/send/${fromAddress}/${toAddress}/${propertyId}/${amount}?referenceAmount=${referenceAmount}`;
+    } else {
+      path = `${this.restURL}transaction/send/${fromAddress}/${toAddress}/${propertyId}/${amount}`;
+    }
+    return axios.get()
     .then((response) => {
       return response.data;
     })
@@ -34,8 +60,18 @@ class Transaction {
     });
   }
 
-  sendAll(fromAddress, toAddress, ecosystem) {
-    return axios.get(`${this.restURL}transaction/sendAll/${fromAddress}/${toAddress}/${ecosystem}`)
+  all(fromAddress, toAddress, ecosystem, redeemAddress = undefined, referenceAmount = undefined) {
+    let path;
+    if(redeemAddress) {
+      path = `${this.restURL}transaction/all/${fromAddress}/${toAddress}/${ecosystem}?redeemAddress=${redeemAddress}`;
+    } else if(redeemAddress && referenceAmount) {
+      path = `${this.restURL}transaction/all/${fromAddress}/${toAddress}/${ecosystem}?redeemAddress=${redeemAddress}&referenceAmount=${referenceAmount}`;
+    } else if(referenceAmount) {
+      path = `${this.restURL}transaction/all/${fromAddress}/${toAddress}/${ecosystem}?referenceAmount=${referenceAmount}`;
+    } else {
+      path = `${this.restURL}transaction/all/${fromAddress}/${toAddress}/${ecosystem}`;
+    }
+    return axios.get(path)
     .then((response) => {
       return response.data;
     })
@@ -44,8 +80,8 @@ class Transaction {
     });
   }
 
-  sendChangeIssuer(fromAddress, toAddress, propertyId) {
-    return axios.get(`${this.restURL}transaction/sendChangeIssuer/${fromAddress}/${toAddress}/${propertyId}`)
+  changeIssuer(fromAddress, toAddress, propertyId) {
+    return axios.get(`${this.restURL}transaction/changeIssuer/${fromAddress}/${toAddress}/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -54,8 +90,8 @@ class Transaction {
     });
   }
 
-  sendCloseCrowdSale(fromAddress, propertyId) {
-    return axios.get(`${this.restURL}transaction/sendCloseCrowdSale/${fromAddress}/${propertyId}`)
+  closeCrowdSale(fromAddress, propertyId) {
+    return axios.get(`${this.restURL}transaction/closeCrowdSale/${fromAddress}/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -64,8 +100,14 @@ class Transaction {
     });
   }
 
-  sendGrant(fromAddress, toAddress, propertyId, amount) {
-    return axios.get(`${this.restURL}transaction/sendGrant/${fromAddress}/${toAddress}/${propertyId}/${amount}`)
+  grant(fromAddress, toAddress, propertyId, amount, memo = undefined) {
+    let path;
+    if(memo) {
+      path = `${this.restURL}transaction/grant/${fromAddress}/${toAddress}/${propertyId}/${amount}?memo=${memo}`;
+    } else {
+      path = `${this.restURL}transaction/grant/${fromAddress}/${toAddress}/${propertyId}/${amount}`;
+    }
+    return axios.get(path)
     .then((response) => {
       return response.data;
     })
@@ -74,8 +116,8 @@ class Transaction {
     });
   }
 
-  sendIssuanceCrowdSale(fromAddress, ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, propertyIdDesired, tokensPerUnit, deadline, earlyBonus, undefine, totalNumber) {
-    return axios.get(`${this.restURL}transaction/sendIssuanceCrowdSale/${fromAddress}/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${propertyIdDesired}/${tokensPerUnit}/${deadline}/${earlyBonus}/${undefine}/${totalNumber}`)
+  crowdSale(fromAddress, ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, propertyIdDesired, tokensPerUnit, deadline, earlyBonus, undefine, totalNumber) {
+    return axios.get(`${this.restURL}transaction/crowdSale/${fromAddress}/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${propertyIdDesired}/${tokensPerUnit}/${deadline}/${earlyBonus}/${undefine}/${totalNumber}`)
     .then((response) => {
       return response.data;
     })
@@ -84,8 +126,8 @@ class Transaction {
     });
   }
 
-  sendIssuanceFixed(fromAddress, ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, totalNumber) {
-    return axios.get(`${this.restURL}transaction/sendIssuanceCrowdSale/${fromAddress}/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${totalNumber}`)
+  fixed(fromAddress, ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, totalNumber) {
+    return axios.get(`${this.restURL}transaction/fixed/${fromAddress}/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${totalNumber}`)
     .then((response) => {
       return response.data;
     })
@@ -94,8 +136,8 @@ class Transaction {
     });
   }
 
-  sendIssuanceManaged(fromAddress, ecosystem, propertyPricision, previousId, category, subcategory, name, url, data) {
-    return axios.get(`${this.restURL}transaction/sendIssuanceManaged/${fromAddress}/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}`)
+  managed(fromAddress, ecosystem, propertyPricision, previousId, category, subcategory, name, url, data) {
+    return axios.get(`${this.restURL}transaction/managed/${fromAddress}/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}`)
     .then((response) => {
       return response.data;
     })
@@ -104,8 +146,8 @@ class Transaction {
     });
   }
 
-  sendRawTx(fromAddress, rawTransaction) {
-    return axios.get(`${this.restURL}transaction/sendRawTx/${fromAddress}/${rawTransaction}`)
+  rawTx(fromAddress, rawTransaction) {
+    return axios.get(`${this.restURL}transaction/rawTx/${fromAddress}/${rawTransaction}`)
     .then((response) => {
       return response.data;
     })
@@ -114,8 +156,8 @@ class Transaction {
     });
   }
 
-  sendRevoke(fromAddress, propertyId, amount) {
-    return axios.get(`${this.restURL}transaction/sendRawTx/${fromAddress}/${propertyId}/${amount}`)
+  revoke(fromAddress, propertyId, amount) {
+    return axios.get(`${this.restURL}transaction/revoke/${fromAddress}/${propertyId}/${amount}`)
     .then((response) => {
       return response.data;
     })
@@ -124,8 +166,8 @@ class Transaction {
     });
   }
 
-  sendSTO(fromAddress, propertyId, amount) {
-    return axios.get(`${this.restURL}transaction/sendSTO/${fromAddress}/${propertyId}/${amount}`)
+  STO(fromAddress, propertyId, amount) {
+    return axios.get(`${this.restURL}transaction/STO/${fromAddress}/${propertyId}/${amount}`)
     .then((response) => {
       return response.data;
     })
