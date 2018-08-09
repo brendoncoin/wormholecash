@@ -4,8 +4,14 @@ class RawTransactions {
     this.restURL = restURL;
   }
 
-  change(rawtx, prevTxs, destination, fee) {
-    return axios.get(`${this.restURL}rawTransactions/change/${rawtx}/${prevTxs}/${destination}/${fee}`)
+  change(rawtx, prevTxs, destination, fee, position = undefined) {
+    let path;
+    if(position) {
+      path = `${this.restURL}rawTransactions/change/${rawtx}/${prevTxs}/${destination}/${fee}?position=${position}`;
+    } else {
+      path = `${this.restURL}rawTransactions/change/${rawtx}/${prevTxs}/${destination}/${fee}`;
+    }
+    return axios.post(path)
     .then((response) => {
       return response.data;
     })
@@ -15,7 +21,7 @@ class RawTransactions {
   }
 
   input(rawtx, txid, n) {
-    return axios.get(`${this.restURL}rawTransactions/input/${rawtx}/${txid}/${n}`)
+    return axios.post(`${this.restURL}rawTransactions/input/${rawtx}/${txid}/${n}`)
     .then((response) => {
       return response.data;
     })
@@ -25,7 +31,7 @@ class RawTransactions {
   }
 
   opReturn(rawtx, payload) {
-    return axios.get(`${this.restURL}rawTransactions/opReturn/${rawtx}/${payload}`)
+    return axios.post(`${this.restURL}rawTransactions/opReturn/${rawtx}/${payload}`)
     .then((response) => {
       return response.data;
     })
@@ -35,7 +41,13 @@ class RawTransactions {
   }
 
   reference(rawtx, destination, amount) {
-    return axios.get(`${this.restURL}rawTransactions/reference/${rawtx}/${destination}/${amount}`)
+    let path;
+    if(amount) {
+      path = `${this.restURL}rawTransactions/reference/${rawtx}/${destination}?amount=${amount}`;
+    } else {
+      path = `${this.restURL}rawTransactions/reference/${rawtx}/${destination}`;
+    }
+    return axios.post(path)
     .then((response) => {
       return response.data;
     })
