@@ -50,8 +50,8 @@ class PayloadCreation {
     });
   }
 
-  issuanceCrowdsale(ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, propertyIdDesired, tokensPerUnit, deadline, earlyBonus, undefine, totalNumber) {
-    return axios.post(`${this.restURL}payloadCreation/issuanceCrowdsale/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${propertyIdDesired}/${tokensPerUnit}/${deadline}/${earlyBonus}/${undefine}/${totalNumber}`)
+  crowdsale(ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, propertyIdDesired, tokensPerUnit, deadline, earlyBonus, undefine, totalNumber) {
+    return axios.post(`${this.restURL}payloadCreation/crowdsale/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${propertyIdDesired}/${tokensPerUnit}/${deadline}/${earlyBonus}/${undefine}/${totalNumber}`)
     .then((response) => {
       return response.data;
     })
@@ -60,8 +60,8 @@ class PayloadCreation {
     });
   }
 
-  issuanceFixed(ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, amount) {
-    return axios.post(`${this.restURL}payloadCreation/issuanceFixed/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${amount}`)
+  fixed(ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, amount) {
+    return axios.post(`${this.restURL}payloadCreation/fixed/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${amount}`)
     .then((response) => {
       return response.data;
     })
