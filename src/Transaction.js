@@ -11,7 +11,7 @@ class Transaction {
     } else {
       path = `${this.restURL}transaction/burnBCHGetWHC/${amount}`;
     }
-    return axios.get(path)
+    return axios.post(path)
     .then((response) => {
       return response.data;
     })
@@ -31,7 +31,7 @@ class Transaction {
     } else {
       path = `${this.restURL}transaction/partiCrowSale/${fromAddress}/${toAddress}/${amount}`;
     }
-    return axios.get(path)
+    return axios.post(path)
     .then((response) => {
       return response.data;
     })
@@ -51,7 +51,7 @@ class Transaction {
     } else {
       path = `${this.restURL}transaction/send/${fromAddress}/${toAddress}/${propertyId}/${amount}`;
     }
-    return axios.get()
+    return axios.post(path)
     .then((response) => {
       return response.data;
     })
@@ -71,7 +71,7 @@ class Transaction {
     } else {
       path = `${this.restURL}transaction/all/${fromAddress}/${toAddress}/${ecosystem}`;
     }
-    return axios.get(path)
+    return axios.post(path)
     .then((response) => {
       return response.data;
     })
@@ -81,7 +81,7 @@ class Transaction {
   }
 
   changeIssuer(fromAddress, toAddress, propertyId) {
-    return axios.get(`${this.restURL}transaction/changeIssuer/${fromAddress}/${toAddress}/${propertyId}`)
+    return axios.post(`${this.restURL}transaction/changeIssuer/${fromAddress}/${toAddress}/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -91,7 +91,7 @@ class Transaction {
   }
 
   closeCrowdSale(fromAddress, propertyId) {
-    return axios.get(`${this.restURL}transaction/closeCrowdSale/${fromAddress}/${propertyId}`)
+    return axios.post(`${this.restURL}transaction/closeCrowdSale/${fromAddress}/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -107,7 +107,7 @@ class Transaction {
     } else {
       path = `${this.restURL}transaction/grant/${fromAddress}/${toAddress}/${propertyId}/${amount}`;
     }
-    return axios.get(path)
+    return axios.post(path)
     .then((response) => {
       return response.data;
     })
@@ -117,7 +117,7 @@ class Transaction {
   }
 
   crowdSale(fromAddress, ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, propertyIdDesired, tokensPerUnit, deadline, earlyBonus, undefine, totalNumber) {
-    return axios.get(`${this.restURL}transaction/crowdSale/${fromAddress}/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${propertyIdDesired}/${tokensPerUnit}/${deadline}/${earlyBonus}/${undefine}/${totalNumber}`)
+    return axios.post(`${this.restURL}transaction/crowdSale/${fromAddress}/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${propertyIdDesired}/${tokensPerUnit}/${deadline}/${earlyBonus}/${undefine}/${totalNumber}`)
     .then((response) => {
       return response.data;
     })
@@ -127,7 +127,7 @@ class Transaction {
   }
 
   fixed(fromAddress, ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, totalNumber) {
-    return axios.get(`${this.restURL}transaction/fixed/${fromAddress}/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${totalNumber}`)
+    return axios.post(`${this.restURL}transaction/fixed/${fromAddress}/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${totalNumber}`)
     .then((response) => {
       return response.data;
     })
@@ -137,7 +137,7 @@ class Transaction {
   }
 
   managed(fromAddress, ecosystem, propertyPricision, previousId, category, subcategory, name, url, data) {
-    return axios.get(`${this.restURL}transaction/managed/${fromAddress}/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}`)
+    return axios.post(`${this.restURL}transaction/managed/${fromAddress}/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}`)
     .then((response) => {
       return response.data;
     })
@@ -147,7 +147,7 @@ class Transaction {
   }
 
   rawTx(fromAddress, rawTransaction) {
-    return axios.get(`${this.restURL}transaction/rawTx/${fromAddress}/${rawTransaction}`)
+    return axios.post(`${this.restURL}transaction/rawTx/${fromAddress}/${rawTransaction}`)
     .then((response) => {
       return response.data;
     })
@@ -157,7 +157,7 @@ class Transaction {
   }
 
   revoke(fromAddress, propertyId, amount) {
-    return axios.get(`${this.restURL}transaction/revoke/${fromAddress}/${propertyId}/${amount}`)
+    return axios.post(`${this.restURL}transaction/revoke/${fromAddress}/${propertyId}/${amount}`)
     .then((response) => {
       return response.data;
     })
@@ -167,7 +167,7 @@ class Transaction {
   }
 
   STO(fromAddress, propertyId, amount) {
-    return axios.get(`${this.restURL}transaction/STO/${fromAddress}/${propertyId}/${amount}`)
+    return axios.post(`${this.restURL}transaction/STO/${fromAddress}/${propertyId}/${amount}`)
     .then((response) => {
       return response.data;
     })
