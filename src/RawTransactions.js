@@ -59,9 +59,9 @@ class RawTransactions {
   decodeTransaction(rawtx, prevTxs = undefined, height = undefined) {
     let path;
     if(prevTxs) {
-      path = `${this.restURL}rawTransactions/decodeTransaction/${rawtx}?prevTxs=${prevTxs}`;
+      path = `${this.restURL}rawTransactions/decodeTransaction/${rawtx}?prevTxs=${JSON.stringify(prevTxs)}`;
     } else if(prevTxs && height) {
-      path = `${this.restURL}rawTransactions/decodeTransaction/${rawtx}?prevTxs=${prevTxs}&height=${height}`;
+      path = `${this.restURL}rawTransactions/decodeTransaction/${rawtx}?prevTxs=${JSON.stringify(prevTxs)}&height=${height}`;
     } else if(height) {
       path = `${this.restURL}rawTransactions/decodeTransaction/${rawtx}?height=${height}`;
     } else {
