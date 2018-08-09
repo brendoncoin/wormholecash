@@ -60,8 +60,8 @@ class PayloadCreation {
     });
   }
 
-  issuanceFixed(ecosystem, propertyPricision, previousId, category, subcategory, name, amount) {
-    return axios.post(`${this.restURL}payloadCreation/issuanceFixed/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${amount}`)
+  issuanceFixed(ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, amount) {
+    return axios.post(`${this.restURL}payloadCreation/issuanceFixed/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${amount}`)
     .then((response) => {
       return response.data;
     })
