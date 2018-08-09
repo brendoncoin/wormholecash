@@ -70,8 +70,8 @@ class PayloadCreation {
     });
   }
 
-  managed(ecosystem, propertyPricision, previousId, category, subcategory, name, data) {
-    return axios.post(`${this.restURL}payloadCreation/managed/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${data}`)
+  managed(ecosystem, propertyPricision, previousId, category, subcategory, name, url, data) {
+    return axios.post(`${this.restURL}payloadCreation/managed/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}`)
     .then((response) => {
       return response.data;
     })
