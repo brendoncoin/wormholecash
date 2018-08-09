@@ -7,9 +7,9 @@ class RawTransactions {
   change(rawtx, prevTxs, destination, fee, position = undefined) {
     let path;
     if(position) {
-      path = `${this.restURL}rawTransactions/change/${rawtx}/${prevTxs}/${destination}/${fee}?position=${position}`;
+      path = `${this.restURL}rawTransactions/change/${rawtx}/${JSON.stringify(prevTxs)}/${destination}/${fee}?position=${position}`;
     } else {
-      path = `${this.restURL}rawTransactions/change/${rawtx}/${prevTxs}/${destination}/${fee}`;
+      path = `${this.restURL}rawTransactions/change/${rawtx}/${JSON.stringify(prevTxs)}/${destination}/${fee}`;
     }
     return axios.post(path)
     .then((response) => {
