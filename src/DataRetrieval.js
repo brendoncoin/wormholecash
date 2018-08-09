@@ -4,8 +4,8 @@ class DataRetrieval {
     this.restURL = restURL;
   }
 
-  getAllBalancesForAddress(address) {
-    return axios.get(`${this.restURL}dataRetrieval/getAllBalancesForAddress/${address}`)
+  balancesForAddress(address) {
+    return axios.get(`${this.restURL}dataRetrieval/balancesForAddress/${address}`)
     .then((response) => {
       return response.data;
     })
@@ -14,8 +14,8 @@ class DataRetrieval {
     });
   }
 
-  getAllBalancesForId(propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/getAllBalancesForId/${propertyId}`)
+  balancesForId(propertyId) {
+    return axios.get(`${this.restURL}dataRetrieval/balancesForId/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -24,8 +24,8 @@ class DataRetrieval {
     });
   }
 
-  getBalance(address, propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/getBalance/${address}/${propertyId}`)
+  balance(address, propertyId) {
+    return axios.get(`${this.restURL}dataRetrieval/balance/${address}/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -34,8 +34,8 @@ class DataRetrieval {
     });
   }
 
-  getBalancesHash(propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/getBalancesHash/${propertyId}`)
+  balancesHash(propertyId) {
+    return axios.get(`${this.restURL}dataRetrieval/balancesHash/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -44,8 +44,8 @@ class DataRetrieval {
     });
   }
 
-  getCrowdSale(propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/getCrowdSale/${propertyId}`)
+  crowdSale(propertyId) {
+    return axios.get(`${this.restURL}dataRetrieval/crowdSale/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -54,8 +54,8 @@ class DataRetrieval {
     });
   }
 
-  getCurrentConsensusHash() {
-    return axios.get(`${this.restURL}dataRetrieval/getCurrentConsensusHash`)
+  currentConsensusHash() {
+    return axios.get(`${this.restURL}dataRetrieval/currentConsensusHash`)
     .then((response) => {
       return response.data;
     })
@@ -64,8 +64,8 @@ class DataRetrieval {
     });
   }
 
-  getFeeShare() {
-    return axios.get(`${this.restURL}dataRetrieval/getFeeShare`)
+  feeShare() {
+    return axios.get(`${this.restURL}dataRetrieval/feeShare`)
     .then((response) => {
       return response.data;
     })
@@ -74,8 +74,8 @@ class DataRetrieval {
     });
   }
 
-  getGrants(propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/getGrants/${propertyId}`)
+  grants(propertyId) {
+    return axios.get(`${this.restURL}dataRetrieval/grants/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -84,8 +84,8 @@ class DataRetrieval {
     });
   }
 
-  getInfo() {
-    return axios.get(`${this.restURL}dataRetrieval/getInfo`)
+  info() {
+    return axios.get(`${this.restURL}dataRetrieval/info`)
     .then((response) => {
       return response.data;
     })
@@ -94,8 +94,8 @@ class DataRetrieval {
     });
   }
 
-  getPayload(txid) {
-    return axios.get(`${this.restURL}dataRetrieval/getPayload/${txid}`)
+  payload(txid) {
+    return axios.get(`${this.restURL}dataRetrieval/payload/${txid}`)
     .then((response) => {
       return response.data;
     })
@@ -104,8 +104,8 @@ class DataRetrieval {
     });
   }
 
-  getProperty(propertyId) {
-    return axios.get(`${this.restURL}dataRetrieval/getProperty/${propertyId}`)
+  property(propertyId) {
+    return axios.get(`${this.restURL}dataRetrieval/property/${propertyId}`)
     .then((response) => {
       return response.data;
     })
@@ -114,8 +114,8 @@ class DataRetrieval {
     });
   }
 
-  getSeedBlocks(startBlock, endBlock) {
-    return axios.get(`${this.restURL}dataRetrieval/getSeedBlocks/${startBlock}/${endBlock}`)
+  seedBlocks(startBlock, endBlock) {
+    return axios.get(`${this.restURL}dataRetrieval/seedBlocks/${startBlock}/${endBlock}`)
     .then((response) => {
       return response.data;
     })
@@ -124,8 +124,8 @@ class DataRetrieval {
     });
   }
 
-  getSTO(txid, recipientFilter) {
-    return axios.get(`${this.restURL}dataRetrieval/getSTO/${txid}/${recipientFilter}`)
+  STO(txid, recipientFilter) {
+    return axios.get(`${this.restURL}dataRetrieval/STO/${txid}/${recipientFilter}`)
     .then((response) => {
       return response.data;
     })
@@ -134,8 +134,8 @@ class DataRetrieval {
     });
   }
 
-  getTransaction(txid) {
-    return axios.get(`${this.restURL}dataRetrieval/getTransaction/${txid}`)
+  transaction(txid) {
+    return axios.get(`${this.restURL}dataRetrieval/transaction/${txid}`)
     .then((response) => {
       return response.data;
     })
@@ -144,8 +144,8 @@ class DataRetrieval {
     });
   }
 
-  listBlockTransactions(index) {
-    return axios.get(`${this.restURL}dataRetrieval/listBlockTransactions/${index}`)
+  blockTransactions(index) {
+    return axios.get(`${this.restURL}dataRetrieval/blockTransactions/${index}`)
     .then((response) => {
       return response.data;
     })
@@ -154,10 +154,10 @@ class DataRetrieval {
     });
   }
 
-  listPendingTransactions(address) {
-    let path = `${this.restURL}dataRetrieval/listPendingTransactions`;
+  pendingTransactions(address) {
+    let path = `${this.restURL}dataRetrieval/pendingTransactions`;
     if(address) {
-      path = `${this.restURL}dataRetrieval/listPendingTransactions?address=${address}`
+      path = `${this.restURL}dataRetrieval/pendingTransactions?address=${address}`
     }
     return axios.get(path)
     .then((response) => {
@@ -168,8 +168,8 @@ class DataRetrieval {
     });
   }
 
-  listProperties() {
-    return axios.get(`${this.restURL}dataRetrieval/listProperties`)
+  properties() {
+    return axios.get(`${this.restURL}dataRetrieval/properties`)
     .then((response) => {
       return response.data;
     })
@@ -178,8 +178,8 @@ class DataRetrieval {
     });
   }
 
-  listTransactions() {
-    return axios.get(`${this.restURL}dataRetrieval/listTransactions`)
+  transactions() {
+    return axios.get(`${this.restURL}transactions/listTransactions`)
     .then((response) => {
       return response.data;
     })
