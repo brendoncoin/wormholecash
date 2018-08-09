@@ -120,8 +120,14 @@ class PayloadCreation {
     });
   }
 
-  STO(propertyId, amount) {
-    return axios.post(`${this.restURL}payloadCreation/STO/${propertyId}/${amount}`)
+  STO(propertyId, amount, distributionProperty = undefined) {
+    let path;
+    if(distributionProperty !== undefined) {
+      path = `${this.restURL}payloadCreation/STO/${propertyId}/${amount}?distributionProperty=${distributionProperty}`;
+    } else {
+      path = `${this.restURL}payloadCreation/STO/${propertyId}/${amount}`;
+    }
+    return axios.post(path)
     .then((response) => {
       return response.data;
     })
