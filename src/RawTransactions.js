@@ -56,8 +56,18 @@ class RawTransactions {
     });
   }
 
-  decodeTransaction(rawtx) {
-    return axios.get(`${this.restURL}rawTransactions/decodeTransaction/${rawtx}`)
+  decodeTransaction(rawtx, prevTxs = undefined, height = undefined) {
+    let path;
+    if(prevTxs) {
+      path = `${this.restURL}rawTransactions/decodeTransaction/${rawtx}?prevTxs=${prevTxs}`;
+    } else if(prevTxs && height) {
+      path = `${this.restURL}rawTransactions/decodeTransaction/${rawtx}?prevTxs=${prevTxs}&height=${height}`;
+    } else if(height) {
+      path = `${this.restURL}rawTransactions/decodeTransaction/${rawtx}?height=${height}`;
+    } else {
+      path = `${this.restURL}rawTransactions/decodeTransaction/${rawtx}`;
+    }
+    return axios.get(path)
     .then((response) => {
       return response.data;
     })
