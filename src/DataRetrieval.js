@@ -179,7 +179,7 @@ class DataRetrieval {
   }
 
   transactions() {
-    return axios.get(`${this.restURL}transactions/listTransactions`)
+    return axios.get(`${this.restURL}dataRetrieval/transactions`)
     .then((response) => {
       return response.data;
     })
