@@ -34,8 +34,14 @@ class PayloadCreation {
     });
   }
 
-  grant(propertyId) {
-    return axios.post(`${this.restURL}payloadCreation/grant/${propertyId}`)
+  grant(propertyId, amount, memo = '') {
+    let path;
+    if(memo !== '') {
+      path = `${this.restURL}payloadCreation/grant/${propertyId}/${amount}?memo=${memo}`;
+    } else {
+      path = `${this.restURL}payloadCreation/grant/${propertyId}/${amount}`;
+    }
+    return axios.post(path)
     .then((response) => {
       return response.data;
     })
