@@ -19,14 +19,14 @@ let corsproxy = require('corsproxy');
 let cmd = require('node-cmd');
 
 program
-  .version('0.1.20');
+  .version('0.1.21');
 
 program
   .command('new <name>')
   // .option('-s, --scaffold <scaffold>', 'The framework to use. Options include react, angular, vuejs, nextjs and node.')
-  .option('-r, --restURL <restURL>', 'The rest URL to use. default: https://wormholerest.bitcoin.com/v1/')
+  .option('-r, --restURL <restURL>', 'The rest URL to use. default: https://wormholerest.example.com/v1/')
   .option('-e, --environment <environment>', 'environment of running WormholeREST instance. Ex: production, staging. (Default: development)')
-  .description(`create a new BITBOX application`)
+  .description(`create a new Wormhole application`)
   .action((name, options) => {
     if(fs.existsSync(`./${name}`)) {
       console.log(chalk.red(`Project ${name} already exists`));
@@ -35,7 +35,7 @@ program
 
       let config;
       let environment = fetchOption('environment=development', config, options);
-      let restURL     = fetchOption('restURL=https://wormholerest.bitcoin.com/v1/', config, options);
+      let restURL     = fetchOption('restURL=https://wormholerest.example.com/v1/', config, options);
 
       // if(options && options.scaffold) {
       //   let scaffold = options.scaffold.toLowerCase();
