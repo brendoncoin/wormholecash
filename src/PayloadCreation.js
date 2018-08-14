@@ -50,8 +50,8 @@ class PayloadCreation {
     });
   }
 
-  crowdsale(ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, propertyIdDesired, tokensPerUnit, deadline, earlyBonus, undefine, totalNumber) {
-    return axios.post(`${this.restURL}payloadCreation/crowdsale/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${propertyIdDesired}/${tokensPerUnit}/${deadline}/${earlyBonus}/${undefine}/${totalNumber}`)
+  crowdsale(ecosystem, propertyPrecision, previousId, category, subcategory, name, url, data, propertyIdDesired, tokensPerUnit, deadline, earlyBonus, undefine, totalNumber) {
+    return axios.post(`${this.restURL}payloadCreation/crowdsale/${ecosystem}/${propertyPrecision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${propertyIdDesired}/${tokensPerUnit}/${deadline}/${earlyBonus}/${undefine}/${totalNumber}`)
     .then((response) => {
       return response.data;
     })
@@ -60,8 +60,8 @@ class PayloadCreation {
     });
   }
 
-  fixed(ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, amount) {
-    return axios.post(`${this.restURL}payloadCreation/fixed/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${amount}`)
+  fixed(ecosystem, propertyPrecision, previousId, category, subcategory, name, url, data, amount) {
+    return axios.post(`${this.restURL}payloadCreation/fixed/${ecosystem}/${propertyPrecision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${amount}`)
     .then((response) => {
       return response.data;
     })
@@ -70,8 +70,8 @@ class PayloadCreation {
     });
   }
 
-  managed(ecosystem, propertyPricision, previousId, category, subcategory, name, url, data) {
-    return axios.post(`${this.restURL}payloadCreation/managed/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}`)
+  managed(ecosystem, propertyPrecision, previousId, category, subcategory, name, url, data) {
+    return axios.post(`${this.restURL}payloadCreation/managed/${ecosystem}/${propertyPrecision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}`)
     .then((response) => {
       return response.data;
     })

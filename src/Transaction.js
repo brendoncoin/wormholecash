@@ -116,8 +116,8 @@ class Transaction {
     });
   }
 
-  crowdSale(fromAddress, ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, propertyIdDesired, tokensPerUnit, deadline, earlyBonus, undefine, totalNumber) {
-    return axios.post(`${this.restURL}transaction/crowdSale/${fromAddress}/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${propertyIdDesired}/${tokensPerUnit}/${deadline}/${earlyBonus}/${undefine}/${totalNumber}`)
+  crowdSale(fromAddress, ecosystem, propertyPrecision, previousId, category, subcategory, name, url, data, propertyIdDesired, tokensPerUnit, deadline, earlyBonus, undefine, totalNumber) {
+    return axios.post(`${this.restURL}transaction/crowdSale/${fromAddress}/${ecosystem}/${propertyPrecision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${propertyIdDesired}/${tokensPerUnit}/${deadline}/${earlyBonus}/${undefine}/${totalNumber}`)
     .then((response) => {
       return response.data;
     })
@@ -126,8 +126,8 @@ class Transaction {
     });
   }
 
-  fixed(fromAddress, ecosystem, propertyPricision, previousId, category, subcategory, name, url, data, totalNumber) {
-    return axios.post(`${this.restURL}transaction/fixed/${fromAddress}/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${totalNumber}`)
+  fixed(fromAddress, ecosystem, propertyPrecision, previousId, category, subcategory, name, url, data, totalNumber) {
+    return axios.post(`${this.restURL}transaction/fixed/${fromAddress}/${ecosystem}/${propertyPrecision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}/${totalNumber}`)
     .then((response) => {
       return response.data;
     })
@@ -136,8 +136,8 @@ class Transaction {
     });
   }
 
-  managed(fromAddress, ecosystem, propertyPricision, previousId, category, subcategory, name, url, data) {
-    return axios.post(`${this.restURL}transaction/managed/${fromAddress}/${ecosystem}/${propertyPricision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}`)
+  managed(fromAddress, ecosystem, propertyPrecision, previousId, category, subcategory, name, url, data) {
+    return axios.post(`${this.restURL}transaction/managed/${fromAddress}/${ecosystem}/${propertyPrecision}/${previousId}/${category}/${subcategory}/${name}/${url}/${data}`)
     .then((response) => {
       return response.data;
     })
