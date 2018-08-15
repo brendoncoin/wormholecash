@@ -13,13 +13,13 @@ let touch = require("touch");
 let emoji = require('node-emoji');
 let repl = require("repl");
 let ini = require('ini');
-let Wormhole = require('./lib/wormhole').default;
+let Wormhole = require('./lib/Wormhole').default;
 let clone = require('git-clone');
 let corsproxy = require('corsproxy');
 let cmd = require('node-cmd');
 
 program
-  .version('0.2.3');
+  .version('0.2.4');
 
 program
   .command('new <name>')
