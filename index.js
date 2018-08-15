@@ -19,7 +19,7 @@ let corsproxy = require('corsproxy');
 let cmd = require('node-cmd');
 
 program
-  .version('0.2.2');
+  .version('0.2.3');
 
 program
   .command('new <name>')
