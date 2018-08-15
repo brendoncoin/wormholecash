@@ -19,12 +19,12 @@ let corsproxy = require('corsproxy');
 let cmd = require('node-cmd');
 
 program
-  .version('0.2.0');
+  .version('0.2.2');
 
 program
   .command('new <name>')
   .option('-s, --scaffold <scaffold>', 'The framework to use. Options include react, angular, vuejs, nextjs and node.')
-  .option('-r, --restURL <restURL>', 'The rest URL to use. default: https://wormholerest.example.com/v1/')
+  .option('-r, --restURL <restURL>', 'The rest URL to use. default: https://trest.example.com/v1/')
   .option('-e, --environment <environment>', 'environment of running WormholeREST instance. Ex: production, staging. (Default: development)')
   .description(`create a new Wormhole application`)
   .action((name, options) => {
@@ -35,7 +35,7 @@ program
 
       let config;
       let environment = fetchOption('environment=development', config, options);
-      let restURL     = fetchOption('restURL=https://wormholerest.example.com/v1/', config, options);
+      let restURL     = fetchOption('restURL=https://trest.example.com/v1/', config, options);
 
       if(options && options.scaffold) {
         let scaffold = options.scaffold.toLowerCase();
