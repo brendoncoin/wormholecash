@@ -23,7 +23,7 @@ program
 
 program
   .command('new <name>')
-  // .option('-s, --scaffold <scaffold>', 'The framework to use. Options include react, angular, vuejs, nextjs and node.')
+  .option('-s, --scaffold <scaffold>', 'The framework to use. Options include react, angular, vuejs, nextjs and node.')
   .option('-r, --restURL <restURL>', 'The rest URL to use. default: https://wormholerest.example.com/v1/')
   .option('-e, --environment <environment>', 'environment of running WormholeREST instance. Ex: production, staging. (Default: development)')
   .description(`create a new Wormhole application`)
@@ -37,51 +37,51 @@ program
       let environment = fetchOption('environment=development', config, options);
       let restURL     = fetchOption('restURL=https://wormholerest.example.com/v1/', config, options);
 
-      // if(options && options.scaffold) {
-      //   let scaffold = options.scaffold.toLowerCase();
-      //   let repo;
-      //   let conf = {};
-      //   if(scaffold === 'node') {
-      //     repo = 'https://github.com/Bitcoin-com/bitbox-scaffold-node.git';
-      //   } else if(scaffold === 'angular') {
-      //     repo = 'https://github.com/Bitcoin-com/bitbox-scaffold-angular.git';
-      //   } else if(scaffold === 'next') {
-      //     repo = 'https://github.com/Bitcoin-com/bitbox-scaffold-next.git';
-      //   } else if(scaffold === 'react') {
-      //     repo = 'https://github.com/Bitcoin-com/bitbox-scaffold-react.git';
-      //   } else if(scaffold === 'vue') {
-      //     repo = 'https://github.com/Bitcoin-com/bitbox-scaffold-vue.git';
-      //   } else {
-      //     console.log(chalk.red(`Scaffold ${scaffold} not supported`));
-      //     process.exit(1)
-      //   }
-      //
-      //   if(options && options.repo) {
-      //     scaffold = 'custom repo';
-      //     repo = options.repo.toLowerCase();
-      //   }
-      //
-      //   clear();
-      //   console.log(
-      //     chalk.blue(
-      //       figlet.textSync('Wormhole', {
-      //         font: '3-D',
-      //         horizontalLayout: 'full'
-      //       })
-      //     )
-      //   );
-      //
-      //   console.log(chalk.blue(`Scaffolding ${scaffold} app in ${name}`));
-      //   clone(repo, `./${name}`, [conf], (res) => {
-      //     if(res == "Error: 'git clone' failed with status 128") {
-      //       console.log(chalk.red('Must create new app in to an empty directory'));
-      //     } else {
-      //       console.log(chalk.green('All done.'), emoji.get(':white_check_mark:'));
-      //       console.log(chalk.blue('Now `cd` in to your new project and run `npm install && npm start`'), emoji.get(':rocket:'));
-      //     }
-      //   });
-      //   return;
-      // }
+      if(options && options.scaffold) {
+        let scaffold = options.scaffold.toLowerCase();
+        let repo;
+        let conf = {};
+        if(scaffold === 'node') {
+          repo = 'https://github.com/Bitcoin-com/wormhole-scaffold-node.git';
+        } else if(scaffold === 'angular') {
+          repo = 'https://github.com/Bitcoin-com/wormhole-scaffold-angular.git';
+        } else if(scaffold === 'next') {
+          repo = 'https://github.com/Bitcoin-com/wormhole-scaffold-next.git';
+        } else if(scaffold === 'react') {
+          repo = 'https://github.com/Bitcoin-com/wormhole-scaffold-react.git';
+        } else if(scaffold === 'vue') {
+          repo = 'https://github.com/Bitcoin-com/wormhole-scaffold-vue.git';
+        } else {
+          console.log(chalk.red(`Scaffold ${scaffold} not supported`));
+          process.exit(1)
+        }
+
+        if(options && options.repo) {
+          scaffold = 'custom repo';
+          repo = options.repo.toLowerCase();
+        }
+
+        clear();
+        console.log(
+          chalk.blue(
+            figlet.textSync('Wormhole', {
+              font: '3-D',
+              horizontalLayout: 'full'
+            })
+          )
+        );
+
+        console.log(chalk.blue(`Scaffolding ${scaffold} app in ${name}`));
+        clone(repo, `./${name}`, [conf], (res) => {
+          if(res == "Error: 'git clone' failed with status 128") {
+            console.log(chalk.red('Must create new app in to an empty directory'));
+          } else {
+            console.log(chalk.green('All done.'), emoji.get(':white_check_mark:'));
+            console.log(chalk.blue('Now `cd` in to your new project and run `npm install && npm start`'), emoji.get(':rocket:'));
+          }
+        });
+        return;
+      }
       clear();
       console.log(
         chalk.blue(
