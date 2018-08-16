@@ -15,7 +15,6 @@ let repl = require("repl");
 let ini = require('ini');
 let Wormhole = require('./lib/Wormhole').default;
 let clone = require('git-clone');
-let corsproxy = require('corsproxy');
 let cmd = require('node-cmd');
 
 program
